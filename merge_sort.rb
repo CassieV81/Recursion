@@ -6,11 +6,22 @@ def merge_sort(n)
   if n.length <= 1
     return n
   end
+
   middle = n.length / 2
   left = n[0...middle]
   right = n[middle..-1]
-  p left
-  p right
+  
+  left = merge_sort(left)
+  right = merge_sort(right)
+
+  sorted_array = []
+  until left.empty? || right.empty?
+    if left.first <= right.first
+      sorted_array.push(left.shift)
+    else
+      sorted_array.push(right.shift)
+    end
+  end
 
 end
 
