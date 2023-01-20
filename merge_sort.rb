@@ -1,5 +1,5 @@
 
-arr = [3, 2, 5, 9, 0, 7, 1, 6, 8]
+arr = [3, 2, 5, 9, 0, 7, 1, 2]
 ex = [2, 0, 3, 1]
 
 def merge_sort(n)
@@ -9,29 +9,28 @@ def merge_sort(n)
   right = copy.slice(middle, copy.length)
   if left.length == 1 && right.length == 1
     merged_array = []
-    sorted_array = []
     if left[0] < right[0]
       merged_array.push(left[0])
       merged_array.push(right[0])
-      # sorted_array.push(merged_array)
-    else
+    elsif left[0] > right[0]
       merged_array.push(right[0])
       merged_array.push(left[0])
-      # sorted_array.push(merged_array)
     end
-    # p merged_array
-    # p sorted_array
-  else
+  elsif left.length > 1 && right.length > 1
     if copy.length > 2
-      left_sorted = merge_sort(left)
-      p left_sorted
-      # p sorted_array.push(merged_array)
-      right_sorted = merge_sort(right)
-      p right_sorted
-      # p sorted_array.push(merged_array)
-      p sorted_array = merge_sort(left_sorted + right_sorted)
+      p left = merge_sort(left)
+      p right = merge_sort(right)
+      sorted_array = []
+      until left.empty? || right.empty?
+        if left.first < right.first
+          sorted_array.push(left.shift)
+        else
+          sorted_array.push(right.shift)
+        end
+      end
+      p sorted_array + left + right
     end
   end
 end
 
-merge_sort(ex)
+merge_sort(arr)
