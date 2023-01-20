@@ -16,13 +16,9 @@ end
 p fibs(8)
 
 def fibs_rec(n)
-  arr = []
-  if n <= 0
-    return 0
-  elsif n <= 2
-    return 1
-  else
-    return fibs_rec(n - 1) + fibs_rec(n - 2)
-  end
+  return [0, 1] if n <= 2
+  fibs_array = fibs_rec(n - 1)
+  fibs_array.push(fibs_array[fibs_array.length - 1] + fibs_array[fibs_array.length - 2])
+  return fibs_array
 end
-puts fibs_rec(8)
+p fibs_rec(8)
