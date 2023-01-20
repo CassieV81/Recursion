@@ -11,6 +11,18 @@ def fibs(n)
     n2 = n3
     i -= 1
   end
-  p arr[0, n]
+  arr[0, n]
 end
-fibs(8)
+p fibs(8)
+
+def fibs_rec(n)
+  arr = []
+  if n <= 0
+    return 0
+  elsif n <= 2
+    return 1
+  else
+    return fibs_rec(n - 1) + fibs_rec(n - 2)
+  end
+end
+puts fibs_rec(8)
